@@ -7,7 +7,11 @@ var stringCalculator = function(){
             return number;
         } else {
             var characters = expression.split(',');
-            return Number(characters[0]) + Number(characters[1]);
+            var result = 0;
+            for (var i = 0; i < characters.length; i++){
+                result += Number(characters[i]);
+            }
+            return result;
         }
     }
 
