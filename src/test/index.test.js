@@ -1,13 +1,28 @@
 var stringCalculator = function () {
 
     function sum(expression) {
-        var characters = expression.split(',');
+        var separator = extractSeparator(expression);
+        var expressionWithoutSeparator = removeSeparator(expression);
+        var characters = expressionWithoutSeparator.split(separator);
         var result = 0;
         for (var i = 0; i < characters.length; i++) {
             var number = Number(characters[i]);
             result = (number) ? result + number : result;
         }
         return result;
+    }
+
+    function removeSeparator(expression){
+        return(expression.replace('//#;', ''));
+    }
+
+    function extractSeparator(expression) {
+        var defaultSeparator = ',';
+        var isSharp = expression.indexOf('//#;') >= 0;
+        if(isSharp) {
+            return '#'
+        }
+        return defaultSeparator;
     }
 
     return {
