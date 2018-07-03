@@ -16,26 +16,34 @@ var stringCalculator = function () {
 
 }();
 
-describe('', function () {
+describe('stringCalculator', function () {
 
-    test('Returns casted single-digit number from string', function () {
-        expect(stringCalculator.sum("1")).toBe(1);
+    describe('Given comma as separator', function () {
+
+        test('Returns casted single-digit number from string', function () {
+            expect(stringCalculator.sum("1")).toBe(1);
+        });
+
+        test('Sum numbers separated by comma', function () {
+            expect(stringCalculator.sum("1,2")).toBe(3);
+            expect(stringCalculator.sum("1,2,1")).toBe(4);
+        });
+
+        test('Return casted number and ignore character', function () {
+            expect(stringCalculator.sum("1,a")).toBe(1);
+        });
+
+        test('Empty expression sums 0', function(){
+            expect(stringCalculator.sum("")).toBe(0);
+        });
     });
 
-    test('Sum numbers separated by comma', function () {
-        expect(stringCalculator.sum("1,2")).toBe(3);
-        expect(stringCalculator.sum("1,2,1")).toBe(4);
+    describe('Given "#" as separator ', function(){
+        test('Sum numbers separated by #', function () {
+            expect(stringCalculator.sum("//#;1#2")).toBe(3);
+            expect(stringCalculator.sum("//#;1#2#1")).toBe(4);
+        });
     });
-
-    test('Return casted number and ignore character', function () {
-        expect(stringCalculator.sum("1,a")).toBe(1);
-    });
-
-    test('Empty expression sums 0', function(){
-        expect(stringCalculator.sum("")).toBe(0);
-    })
 
 });
-
-
 
