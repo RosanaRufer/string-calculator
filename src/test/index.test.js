@@ -2,6 +2,7 @@
 var stringCalculator = function(){
 
     function sum(){
+        return 1;
     }
 
     return {
