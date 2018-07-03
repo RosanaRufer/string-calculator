@@ -9,7 +9,8 @@ var stringCalculator = function(){
             var characters = expression.split(',');
             var result = 0;
             for (var i = 0; i < characters.length; i++){
-                result += Number(characters[i]);
+                var castedNumber = Number(characters[i]);
+                result = (castedNumber) ? result + castedNumber : result;
             }
             return result;
         }
