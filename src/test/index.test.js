@@ -2,7 +2,7 @@ var stringCalculator = function () {
 
     function sum(expression) {
         var separator = extractSeparator(expression);
-        var expressionWithoutSeparator = removeSeparatorConfiguration(expression);
+        var expressionWithoutSeparator = removeSeparatorConfiguration(expression, separator);
         var characters = expressionWithoutSeparator.split(separator);
         var result = 0;
         for (var i = 0; i < characters.length; i++) {
@@ -12,14 +12,15 @@ var stringCalculator = function () {
         return result;
     }
 
-    function removeSeparatorConfiguration(expression){
-        return(expression.replace('//#;', ''));
+    function removeSeparatorConfiguration(expression, separator){
+        return(expression.replace('//'+separator+';', ''));
     }
 
     function extractSeparator(expression) {
         var defaultSeparator = ',';
-        var isSharp = expression.indexOf('//#;') >= 0;
-        return (isSharp) ? '#' : defaultSeparator;
+        var matchSeparator = new RegExp('(\/\/(.);).+');
+        var result = matchSeparator.exec(expression);
+        return result && result.length === 3 ? result[2] : defaultSeparator;
     }
 
     return {
