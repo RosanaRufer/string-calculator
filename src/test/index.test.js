@@ -57,5 +57,10 @@ describe('stringCalculator', function () {
         });
     });
 
+    describe('Given "&" as separator', function () {
+        test('Sum numbers separated by &', function() {
+            expect(stringCalculator.sum("//&;1&2")).toBe(3);
+        });
+    })
 });
 
