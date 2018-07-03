@@ -18,9 +18,9 @@ var stringCalculator = function () {
 
     function extractSeparator(expression) {
         var defaultSeparator = ',';
-        var matchSeparator = new RegExp('(\/\/(.);).+');
+        var matchSeparator = new RegExp('\/\/(.);.*');
         var result = matchSeparator.exec(expression);
-        return result && result.length === 3 ? result[2] : defaultSeparator;
+        return result ? result[1] : defaultSeparator;
     }
 
     return {
