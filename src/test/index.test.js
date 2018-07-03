@@ -4,8 +4,8 @@ var stringCalculator = function () {
         var characters = expression.split(',');
         var result = 0;
         for (var i = 0; i < characters.length; i++) {
-            var castedNumber = Number(characters[i]);
-            result = (castedNumber) ? result + castedNumber : result;
+            var number = Number(characters[i]);
+            result = (number) ? result + number : result;
         }
         return result;
     }
@@ -31,6 +31,9 @@ describe('', function () {
         expect(stringCalculator.sum("1,a")).toBe(1);
     });
 
+    test('Empty expression sums 0', function(){
+        expect(stringCalculator.sum("")).toBe(0);
+    })
 
 });
 
