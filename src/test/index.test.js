@@ -1,9 +1,13 @@
 var stringCalculator = function () {
 
     function sum(expression) {
-        var separator = extractSeparator(expression);
+        var separator = findSeparator(expression);
         var expressionWithoutSeparator = removeSeparatorConfiguration(expression, separator);
         var characters = expressionWithoutSeparator.split(separator);
+        return sumOnlyNumbers(characters);
+    }
+
+    function sumOnlyNumbers(characters){
         var result = 0;
         for (var i = 0; i < characters.length; i++) {
             var number = Number(characters[i]);
@@ -12,15 +16,15 @@ var stringCalculator = function () {
         return result;
     }
 
-    function removeSeparatorConfiguration(expression, separator){
-        return(expression.replace('//'+separator+';', ''));
-    }
-
-    function extractSeparator(expression) {
+    function findSeparator(expression) {
         var defaultSeparator = ',';
         var matchSeparator = new RegExp('\/\/(.);.*');
         var result = matchSeparator.exec(expression);
         return result ? result[1] : defaultSeparator;
+    }
+
+    function removeSeparatorConfiguration(expression, separator){
+        return(expression.replace('//' + separator + ';', ''));
     }
 
     return {
