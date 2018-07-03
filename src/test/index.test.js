@@ -32,6 +32,10 @@ describe('', function(){
         expect(stringCalculator.sum("1,2,1")).toBe(4);
     });
 
+    test('Return casted number and ignore character', function() {
+        expect(stringCalculator.sum("1,a")).toBe(1);
+    });
+
 
 });
 
