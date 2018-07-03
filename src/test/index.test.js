@@ -25,6 +25,7 @@ describe('', function(){
 
     test('Sum numbers separated by comma', function() {
         expect(stringCalculator.sum("1,2")).toBe(3);
+        expect(stringCalculator.sum("1,2,1")).toBe(4);
     });
 
 
